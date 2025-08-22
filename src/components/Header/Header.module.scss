@@ -1,0 +1,52 @@
+.header {
+  border: 0.3px solid rgb(255, 162, 0);
+  border-radius: 70px;
+  margin: 27px;
+  padding: 15px 40px;
+
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+
+  background-color: rgb(51, 79, 65);
+  opacity: 0.5;
+  color: rgb(255, 162, 0);
+  transition: 0.3s;
+}
+
+.header:hover {
+  opacity: 0.8;
+}
+
+
+.header nav {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+/* Логотип */
+.header nav img {
+  width: 35px;
+  height: 35px;
+  border: 3px solid rgb(255, 162, 0);
+  border-radius: 50%;
+  background-color: rgb(255, 162, 0);
+  object-fit: cover;
+}
+
+
+.header .search {
+  padding: 7px 20px;
+  border-radius: 30px;
+  border: 0.3px solid rgb(255, 162, 0);
+  background-color: rgb(24, 44, 34);
+  color: rgb(255, 162, 0);
+  outline: none;
+  transition: 0.3s;
+}
+
+.header .search:focus {
+  border-color: rgb(255, 200, 0);
+  background-color: rgb(35, 60, 45);
+}
