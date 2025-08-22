@@ -1,41 +1,30 @@
 import styles from "./Header.module.scss";
-import logo from "../../../public/pmg.png";
+// import logo from "../../../public/pmg.png";
+import { useLocation, useNavigate } from "react-router-dom";
+import {pages} from "./IconRouters"
 
-const iconIsHeader = [
-  {
-    link: "/",
-    title: "главная",
-    // iconImg: ""
-  },
-  {
-    link: "/catalog",
-    title: "каталог",
-    // iconImg: "",
-  },
-  {
-    link: "/onas",
-    title: "о нас",
-    // iconImg: "",
-  },
-  {
-    link: "/mybook",
-    title: "мои книги",
-    // iconImg: "",
-  },
-];
+
 
 export function Header() {
+  const navigate = useNavigate();
+  const {pathname} = useLocation()
   return (
     <header className={styles.header}>
       <nav>
-        <img src={logo} alt="logo" />
-        {iconIsHeader.map((icon, index) => (
-          <a key={index} href={iconIsHeader.link}>
-            {icon.title}
-          </a>
+        {pages.map((item, index) => (
+          <span
+            className={pathname === item.link ? styles.activeLink : ""}
+            key={index}
+            onClick={() => navigate(item.link)}>
+            {item.title}
+          </span>
         ))}
       </nav>
-        <input className={styles.search} placeholder="поиск книг" type="поиск книг" />
+      <input
+        className={styles.search}
+        placeholder="поиск книг"
+        type="поиск книг"
+      />
     </header>
   );
 }
