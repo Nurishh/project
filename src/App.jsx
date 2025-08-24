@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Header } from "./components/Header/Header";
 import "./styles/global.scss";
@@ -8,6 +7,7 @@ import { NotFound } from "./components/Pages/NotFound/NotFound";
 import { Product } from "./components/Pages/Product/Product";
 import { MyBooks } from "./components/Pages/MyBooks/MyBook";
 import { About } from "./components/Pages/About/About";
+// import {BooksSlider} from "./components/Pages/Swiper/BooksSlider";
 
 function App() {
   return (
@@ -15,12 +15,13 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About/>} />
-        <Route path="/catalogg" element={<Catalogg/>} />
-        <Route path="/mybooks" element={<MyBooks/>} />
-        <Route path="/product" element={<Product/>} />
-        <Route path="*" element={<NotFound/>} />
+        <Route path="/about" element={<About />} />
+        <Route path="/catalogg" element={<Catalogg />} />
+        <Route path="/mybooks" element={<MyBooks />} />
+        <Route path="/product" element={<Product />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
+      {/* <Appre/> */}
     </BrowserRouter>
   );
 }
