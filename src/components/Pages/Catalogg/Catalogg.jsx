@@ -1,3 +1,7 @@
+import { Books } from "./boook/Books";
+
 export function Catalogg() {
-  return <p>catalog</p>;
+  return <div>catalog
+    <Books/>
+  </div>;
 }

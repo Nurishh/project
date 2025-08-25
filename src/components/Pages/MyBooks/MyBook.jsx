@@ -2,9 +2,9 @@ import { Login } from "../Login/Loginn";
 
 export function MyBooks() {
   return (
-    <p>
+    <div>
       My books
       <Login />
-    </p>
+    </div>
   );
 }
