@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getBooks } from "../../../../api/api";
+import  styles  from "./Book.module.scss";
 
 export function Books() {
   const [books, setBooks] = useState([]); // ← Здесь setBooks
@@ -29,11 +30,15 @@ export function Books() {
 
   return (
     <div>
-      <h1>Книги ({books.length})</h1>
+      <h1 className={styles.num}>Книги ({books.length})</h1>
       {books.map((book) => (
-        <div key={book.id} className="book-card">
-          <img src={book.cover_image} alt={book.title} />
-          <h3>{book.title}</h3>
+        <div key={book.id} className={styles.cart}>
+          <img
+            src={book.cover_image}
+            alt={book.title}
+            className={styles.imgBooks}
+          />
+          <h3 className={styles.namebook}>{book.title}</h3>
           <p>Автор: {book.author}</p>
           <p>Рейтинг: ⭐ {book.average_rating || "Нет оценок"}</p>
           <a href={book.file} target="_blank" rel="noopener noreferrer">

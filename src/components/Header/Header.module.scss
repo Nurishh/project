@@ -4,6 +4,9 @@
   margin: 27px;
   padding: 15px 40px;
   cursor: pointer;
+  position: relative;
+  z-index: 30;
+
 
   display: flex;
   justify-content: space-between;
