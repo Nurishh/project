@@ -1,10 +1,10 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./SignUp.module.scss";
 import { signUp } from "../../../../store/actions/action";
 
 export function SignUp({ setHasAccount }) {
   const disptch = useDispatch();
-  console.log("тут signUp");
+  const { isAuthLoading } = useSelector((state) => state.auth);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,11 +25,11 @@ export function SignUp({ setHasAccount }) {
       <input name="email" type="email" placeholder="email" />
       <input name="password" type="password" placeholder="password" />
 
-      <button type="button" onClick={() => setHasAccount(true)}>
+      <button onClick={() => setHasAccount(true)}>
         Уже есть аккаунт? Войти
       </button>
-      <button type="submit" className={styles.saveBtn}>
-        Сохранить
+      <button className={styles.saveBtn}>
+        {isAuthLoading ? "Сохранение..." : "Сохранить"}
       </button>
     </form>
   );

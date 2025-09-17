@@ -1,8 +1,13 @@
 // файл для настроек шрифтов
 
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Merienda:wght@300..900&family=Yellowtail&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Prata&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap");
 
-
-:root{
-    --font-archivo: "Archivo Black", sans-serif;
+:root {
+  --font-title: "Playfair Display", serif; //ноу
+  --font-basic: "Prata", serif; //для больших выбрать это
+  --font-small: "Cormorant Garamond", serif; //основной это
+  --font-titledddd: "EB Garamond", serif; //ноу
 }

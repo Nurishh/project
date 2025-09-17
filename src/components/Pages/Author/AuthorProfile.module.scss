@@ -1,0 +1,280 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 50px;
+  font-size: 18px;
+  color: #666;
+}
+
+.error {
+  color: #ff4757;
+}
+
+// Секция автора
+.authorSection {
+  background-color: var(--graydark);
+  border-radius: 12px;
+  padding: 70px;
+  padding-top: 20vh;
+  padding-bottom: 20vh;
+  box-shadow: 0 4px 15px rgba(240, 241, 188, 0.361);
+  margin-bottom: 30px;
+}
+
+.authorHeader {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.authorImage {
+  flex-shrink: 0;
+
+  img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--milkColor);
+    box-shadow: 0 4px 15px rgba(240, 241, 188, 0.361);
+
+    @media (max-width: 768px) {
+      width: 150px;
+      height: 150px;
+    }
+  }
+}
+
+.authorInfo {
+  flex: 1;
+
+  h1 {
+    margin: 0 0 15px 0;
+    // color: #333;
+    font-size: 32px;
+    font-family: var(--font-basic);
+  color: var(--milkColor);
+
+    @media (max-width: 768px) {
+      font-size: 28px;
+    }
+  }
+}
+
+.metaInfo {
+  margin-bottom: 20px;
+  font-family: var(--font-small);
+  color: var(--bigTextHome);
+  font-weight: bold;
+}
+
+.metaItem {
+  display: flex;
+  margin-bottom: 8px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.metaLabel {
+  font-weight: 600;
+  color: #666;
+  min-width: 140px;
+  font-family: var(--font-small);
+  color: var(--bigTextHome);
+
+  @media (max-width: 768px) {
+    min-width: auto;
+    margin-bottom: 2px;
+  }
+}
+
+.metaValue {
+  font-family: var(--font-small);
+  color: var(--bigTextHome);
+}
+
+.websiteLink {
+  color: #667eea;
+  text-decoration: none;
+  font-family: var(--font-small);
+  color: var(--bigTextHome);
+
+  &:hover {
+    text-decoration: underline;
+    box-shadow: 0 4px 15px rgba(240, 241, 188, 0.361);
+  }
+}
+
+.genres {
+  margin-top: 20px;
+  font-family: var(--font-small);
+  color: var(--bigTextHome);
+
+  h3 {
+    margin: 0 0 10px 0;
+    // color: #333;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--milkColor);
+    font-family: var(--font-basic);
+  }
+}
+
+.genreTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.genreTag {
+  background-color: #3a3a3a;
+  color: var(--bigTextHome);
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+// Биография
+.bioSection {
+  border-top: 1px solid #eaeaea;
+  padding-top: 20px;
+
+
+  h2 {
+    margin: 0 0 15px 0;
+    color: var(--milkColor);
+    font-family: var(--font-basic);
+  }
+}
+
+.bioText {
+  line-height: 1.6;
+  color: #444;
+
+
+  p {
+    line-height: 2.5;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    font-family: var(--font-small);
+  color: var(--bigTextHome);
+  }
+}
+
+// Секция книг
+.booksSection {
+  background-color: var(--graydark);
+  border-radius: 12px;
+  padding: 70px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    margin: 0 0 20px 0;
+    color: var(--bigTextHome);
+    font-size: 24px;
+    font-family: var(--font-basic);
+  }
+}
+
+.emptyState {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  font-style: italic;
+}
+
+.booksGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.bookCard {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(240, 241, 188, 0.361);
+  }     
+}
+
+.bookLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.bookCover {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.bookInfo {
+  padding: 15px;
+}
+
+.bookTitle {
+  font-size: 16px;
+  margin: 0 0 8px 0;
+  color: var(--milkColor);
+  font-weight: 600;
+  line-height: 1.3;
+  font-family: var(--font-basic);
+}
+
+.bookYear {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 10px 0;
+  font-family: var(--font-small);
+}
+
+.rating {
+  color: #f59e0b;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: var(--font-small);
+}
+
+.bookGenres {
+  padding: 0 15px 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-family: var(--font-small);
+  
+}
+
+.bookGenreTag {
+  background-color: #3a3a3a;
+  color: var(--milkColor);
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-family: var(--font-small);
+}
+
+.moreGenres {
+  color: #94a3b8;
+  font-size: 12px;
+  align-self: center;
+   color: var(--milkColor);
+}

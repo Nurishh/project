@@ -1,0 +1,44 @@
+.footer {
+  // background-color: #051102;
+  background-color: var(--colorIsHeader);
+  opacity: 0.5;
+  display: flex;
+  justify-content: space-around;
+  padding: 3rem;
+
+  .text {
+    display: flex;
+    gap: 15px;
+
+    h3 {
+      font-family: var(--font-basic);
+      font-size: 1.6em;
+      color: var(--milkColor);
+      display: flex;
+      align-items: center;
+    }
+    p {
+      font-family: var(--font-small);
+      color: #dcc084;
+    }
+  }
+
+  .img{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+
+    a{
+        gap: 15px;
+    }
+
+    img{
+        height: 3vh;
+        width: 3vh;
+        filter: blur(0.7px);
+    }
+    img:hover{
+        filter: blur(0);
+    }
+  }
+}

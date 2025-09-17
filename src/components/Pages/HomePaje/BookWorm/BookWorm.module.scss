@@ -1,0 +1,66 @@
+/* BookWorm.module.scss (горизонтальная версия) */
+.container {
+    margin-top: 180px;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  margin-bottom: 150px;
+}
+
+.content {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  max-width: 1200px;
+}
+
+.textBlock {
+  flex: 1;
+  
+  
+  h3 {
+    color: var(--milkColor);
+    font-family: var(--font-basic);
+    margin-bottom: 3rem;
+  }
+  
+  p {
+    color: var(--bigTextHome);
+    font-family: var(--font-small);
+    line-height: 2;
+    font-size: 1.3em;
+  }
+}
+
+.imageContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  
+  img {
+    border-radius: 40%;
+    border: 3px solid #d1b06b;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .textBlock {
+    text-align: center;
+    
+    p {
+      font-size: 0.9rem;
+    }
+  }
+  
+  .imageContainer img {
+    border-radius: 25px;
+  }
+}

@@ -1,13 +1,16 @@
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./SignIn.module.scss";
+import { signIn } from "../../../../store/actions/action";
 
 export function SignIn({ setHasAccount }) {
-  console.log("тут signIn");
+  const dispatch = useDispatch();
+  const { isAuthLoading } = useSelector((state) => state.auth);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
-    console.log(data);
+    dispatch(signIn(data));
   };
 
   return (
@@ -16,11 +19,11 @@ export function SignIn({ setHasAccount }) {
       <input name="email" type="email" placeholder="email" />
       <input name="password" type="password" placeholder="password" />
 
-      <button type="button" onClick={() => setHasAccount(false)}>
+      <button onClick={() => setHasAccount(false)}>
         Нет аккаунта? Зарегестрироваться
       </button>
-      <button type="submit" className={styles.saveBtn}>
-        Войти
+      <button className={styles.saveBtn}>
+        {isAuthLoading ? "Загрузка..." : "Войти"}
       </button>
     </form>
   );

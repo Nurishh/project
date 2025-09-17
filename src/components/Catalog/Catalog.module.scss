@@ -1,0 +1,223 @@
+.catalog {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+
+  h1 {
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #666;
+    font-size: 16px;
+  }
+}
+
+.filtersPanel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.searchBox {
+  flex: 1;
+  min-width: 250px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 16px;
+
+  &:focus {
+    outline: none;
+    border-color: #667eea;
+  }
+}
+
+.sortBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  label {
+    font-weight: 600;
+    color: #333;
+  }
+}
+
+.sortSelect {
+  padding: 10px;
+  border: 2px solid #e2e8f0;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+    border-color: #667eea;
+  }
+}
+
+.clearButton {
+  background: #ff4757;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+
+  &:hover {
+    background: #ff3742;
+  }
+}
+
+.genresSection {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    margin: 0 0 15px 0;
+    color: #333;
+  }
+}
+
+.genreTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.genreTag {
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+
+  &:hover {
+    background: #e3f2fd;
+    border-color: #667eea;
+  }
+
+  &.active {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+  }
+}
+
+.booksSection {
+  margin-bottom: 30px;
+}
+
+.noResults {
+  text-align: center;
+  padding: 40px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  h3 {
+    color: #666;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #888;
+    margin-bottom: 20px;
+  }
+}
+
+.activeFilters {
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  margin-bottom: 20px;
+
+  h3 {
+    margin: 0 0 15px 0;
+    color: #333;
+  }
+}
+
+.activeFiltersList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.activeFilter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: 1px solid #e9ecef;
+  font-size: 14px;
+
+  button {
+    background: none;
+    border: none;
+    color: #ff4757;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      color: #ff3742;
+    }
+  }
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .filtersPanel {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .searchBox {
+    min-width: auto;
+  }
+
+  .sortBox {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .genreTags {
+    justify-content: center;
+  }
+
+  .activeFiltersList {
+    justify-content: center;
+  }
+}

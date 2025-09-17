@@ -1,3 +1,3 @@
 export function Product(){
-    return <p>producs</p>
+    return <div>producs</div>
 }

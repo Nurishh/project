@@ -1,0 +1,33 @@
+
+.navMenu {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  font-family: var(--font-small);
+}
+
+.navItem {
+  padding: 10px 20px;
+  color: var(--textOrange);
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 50px;
+  transition: background-color 0.3s ease;
+  background-color: var(--colorIsHeader);
+  opacity: 0.3;
+}
+
+
+.navItem:hover {
+  color: rgb(185, 196, 159);
+  opacity: 0.3;
+}
+
+.activeLink {
+ box-shadow: 0px 0px 30px -10px var(--isActiveYellow);
+ color: var(--isActiveYellow);
+ opacity: 0.6;
+}

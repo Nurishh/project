@@ -1,20 +1,21 @@
 .header {
-  border: 0.3px solid rgb(255, 162, 0);
+  border: 0.3px solid var(--textOrange);
   border-radius: 70px;
   margin: 27px;
-  padding: 15px 40px;
+  padding: 10px 40px;
   cursor: pointer;
-  position: relative;
+  position: sticky;
+  top: 27px;
   z-index: 30;
-
+  font-family: var(--font-small);
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  background-color: rgb(51, 79, 65);
+  background-color: var(--colorIsHeader);
   opacity: 0.5;
-  color: rgb(255, 162, 0);
+  color: var(--textOrange);
   transition: 0.3s;
 }
 
@@ -28,35 +29,197 @@
   align-items: center;
 }
 
-/* Логотип */
 .header nav img {
   width: 35px;
   height: 35px;
-  border: 3px solid rgb(255, 162, 0);
+  border: 3px solid var(--textOrange);
   border-radius: 50%;
-  background-color: rgb(255, 162, 0);
+  background-color: var(--textOrange);
   object-fit: cover;
 }
 
-
-.header .search {
-  padding: 7px 20px;
-  border-radius: 30px;
-  border: 0.3px solid rgb(255, 162, 0);
-  background-color: rgb(24, 44, 34);
-  color: rgb(255, 162, 0);
-  outline: none;
-  transition: 0.3s;
+.searchContainer {
+  position: relative;
+  width: 350px;
 }
 
-.header .search:focus {
-  border-color: rgb(255, 200, 0);
+.searchForm {
+  width: 100%;
+}
+
+.search {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 0.3px solid var(--textOrange);
+  background-color: rgb(24, 44, 34);
+  color: var(--textOrange);
+  outline: none;
+  transition: 0.3s;
+  font-family: var(--font-small);
+  font-size: 14px;
+}
+
+.search:focus {
+  border-color: var(--isActiveYellow);
   background-color: rgb(35, 60, 45);
 }
 
-
-
 .activeLink {
-box-shadow: 0px 0px 50px -6px rgb(255, 200, 0);
- color: rgb(255, 200, 0);
+  box-shadow: 0px 0px 50px -6px var(--isActiveYellow);
+  color: var(--isActiveYellow);
+}
+
+.searchResults {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: rgb(24, 44, 34);
+  border: 0.3px solid var(--textOrange);
+  border-radius: 12px;
+  margin-top: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+  color: var(--textOrange);
+  z-index: 120;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+}
+
+.searchItem {
+  padding: 12px;
+  cursor: pointer;
+  font-family: var(--font-small);
+  border-bottom: 0.3px solid rgba(255, 165, 0, 0.3);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: rgb(35, 60, 45);
+    color: var(--isActiveYellow);
+  }
+}
+
+.resultContent {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.resultImage {
+  width: 40px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.resultInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.resultTitle {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resultAuthor {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resultMeta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #aaa;
+}
+
+.resultRating {
+  color: #ff9800;
+  font-weight: 600;
+}
+
+/* пользователь чорт не работает*/
+.userBlock {
+  position: relative;
+  display: inline-block;
+}
+
+.userName {
+  padding: 8px 16px;
+  border: 0.3px solid var(--textOrange);
+  border-radius: 30px;
+  color: var(--textOrange);
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: rgb(35, 60, 45);
+    color: var(--isActiveYellow);
+  }
+}
+
+.logoutBtn {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: rgb(24, 44, 34);
+  border: 0.3px solid var(--textOrange);
+  color: var(--textOrange);
+  padding: 8px 16px;
+  border-radius: 20px;
+  margin-top: 8px;
+  cursor: pointer;
+  font-family: var(--font-small);
+  font-size: 14px;
+
+  &:hover {
+    background-color: rgb(35, 60, 45);
+    color: var(--isActiveYellow);
+  }
+}
+
+.userBlock:hover .logoutBtn {
+  display: block;
+}
+
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 20px;
+    margin: 15px;
+  }
+
+  .header nav {
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .searchContainer {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .searchResults {
+    width: 100%;
+    left: 0;
+  }
 }

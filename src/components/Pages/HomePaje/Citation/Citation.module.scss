@@ -1,0 +1,38 @@
+.citataemae {
+  border-radius: 50px;
+  border: 1px solid #d1b06b;
+  padding: 30px;
+  // width: 83vw;
+  text-align: center;
+  margin: 0 20vh;
+  color: #d1b06b;
+
+  img {
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+
+  h3 {
+    font-family: var(--font-basic);
+    margin-bottom: 30px;
+    font-size: 1.7em;
+  }
+
+  p {
+    font-family: var(--font-small);
+    color: #dcc084;
+  }
+}
+
+.citataemaeAbout {
+  border: 1px solid #355e3b;
+  border-radius: 50px;
+  padding: 30px;
+  // width: 83vw;
+  text-align: center;
+  margin: 0 20vh;
+  color: #d1b06b;
+  margin: 80px ;
+ font-size: 1.5em;
+ padding-bottom: 60px;
+}

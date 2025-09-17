@@ -1,38 +1,72 @@
-// services/api.js
+
 import axios from "axios";
 
-// Все книги
-export async function getBooks() {
-  const response = await axios.get("/api/books/");
-  return response.data;
-}
+const api = axios.create();
 
-// Жанры
-export async function getGenres() {
-  const response = await axios.get("/api/genres/");
-  return response.data;
-}
+const baseURL = import.meta.env.VITE_API_URL;
 
-// Регистрация
-export async function registerUser(userData) {
-  const response = await axios.post("/account/register/", userData);
-  return response.data;
-}
+axiosInstance.defaults.baseURL = baseURL;
 
-// Логин
-export async function loginUser(userData) {
-  const response = await axios.post("/account/login/", userData);
-  return response.data;
-}
+axiosInstance.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token");
 
-// Добавить книгу (для админки)
-export async function addBook(bookData) {
-  const response = await axios.post("/api/books/", bookData);
-  return response.data;
-}
+    config.headers["Content-Type"] = "application/json";
 
-// Добавить жанр (для админки)
-export async function addGenre(genreData) {
-  const response = await axios.post("/api/genres/", genreData);
-  return response.data;
-}
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+export default api;
+
+
+// пример как в дрeгих использоватть js-------------books
+// import api from "./api";
+
+// // получить все книги
+// export const getBooks = () => api.get("/books");
+
+// // получить книгу по id
+// export const getBookById = (id) => api.get(`/books/${id}`);
+
+// // добавить книгу
+// export const addBook = (book) => api.post("/books", book);
+
+// // обновить книгу
+// export const updateBook = (id, book) => api.put(`/books/${id}`, book);
+
+// // удалить книгу
+// export const deleteBook = (id) => api.delete(`/books/${id}`);
+
+
+
+
+// пример в jsx вывести --------
+// import { useEffect, useState } from "react";
+// import { getBooks } from "../api/books";
+
+// export default function Books() {
+//   const [books, setBooks] = useState([]);
+
+//   useEffect(() => {
+//     getBooks().then((res) => setBooks(res.data));
+//   }, []);
+
+//   return (
+//     <div>
+//       <h1>Список книг</h1>
+//       <ul>
+//         {books.map((book) => (
+//           <li key={book.id}>
+//             {book.title} — {book.author}
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// }

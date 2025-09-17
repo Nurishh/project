@@ -1,0 +1,240 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 50px;
+  font-size: 18px;
+}
+
+.error {
+  color: #ff4757;
+}
+
+// Секция профиля
+.profileSection {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: white;
+  font-weight: bold;
+}
+
+.profileInfo {
+  flex: 1;
+
+  h1 {
+    margin: 0 0 5px 0;
+    color: #333;
+    font-size: 28px;
+  }
+}
+
+.role {
+  color: #667eea;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+}
+
+.email {
+  color: #666;
+  margin: 0 0 20px 0;
+}
+
+.stats {
+  display: flex;
+  gap: 30px;
+}
+
+.stat {
+  text-align: center;
+
+  &Number {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #0022b8;
+  }
+
+  &Label {
+    font-size: 14px;
+    color: #666;
+  }
+}
+
+// Кнопки действий
+.actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.actionButton {
+  background-color: #667eea;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s;
+
+  &:hover {
+    background-color: #5a67d8;
+  }
+}
+
+// Секция книг
+.booksSection {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    margin: 0 0 20px 0;
+    color: #333;
+  }
+}
+
+.emptyState {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+
+  p {
+    margin-bottom: 20px;
+  }
+}
+
+.addBookButton {
+  background: #48bb78;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+
+  &:hover {
+    background: #38a169;
+  }
+}
+
+.booksGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.bookCard {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.bookLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.bookCover {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.bookInfo {
+  padding: 15px;
+}
+
+.bookTitle {
+  font-size: 16px;
+  margin: 0 0 8px 0;
+  color: #333;
+  font-weight: 600;
+}
+
+.bookAuthor {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 5px 0;
+}
+
+.bookYear {
+  font-size: 12px;
+  color: #888;
+  margin: 0 0 10px 0;
+}
+
+.rating {
+  color: #f59e0b;
+  font-weight: bold;
+}
+
+.bookActions {
+  padding: 0 15px 15px;
+}
+
+.editButton {
+  background: #ed8936;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-block;
+
+  &:hover {
+    background: #dd7724;
+  }
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .profileHeader {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .stats {
+    justify-content: center;
+  }
+
+  .actions {
+    justify-content: center;
+  }
+
+  .booksGrid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}

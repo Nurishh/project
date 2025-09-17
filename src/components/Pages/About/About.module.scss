@@ -1,0 +1,77 @@
+.about {
+  //   background-image: url("../../../assets/images/png/fontwoabout.jpg");
+  // background-image: url("../../../assets/images/png/fooonAbouut.jpeg");
+  // background-image: url("https://i.pinimg.com/1200x/d8/da/03/d8da03b38e97e253981ad9f79da26dbd.jpg");
+  // background-image: url("https://i.pinimg.com/736x/f8/9b/72/f89b72bf1f1b5f5e4e64071552b543b4.jpg");
+  background-image: url("../../../assets/images/png/AbouuutFonn.jpeg");
+  //   top: 0;
+  //   left: 0;
+  //   width: 100vw;
+  //   height: 100vh;
+  background-size: cover;
+  //   background-position: center;
+  background-repeat: no-repeat;
+  // position: relative;
+  //   position: absolute;
+  margin-top: -120px;
+  // filter: blur(4px);
+  //   z-index: -1;
+
+  // overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  padding: 70px 20px;
+}
+
+.content {
+  margin: 80px;
+  background-color: rgb(234, 234, 199);
+  padding: 40px;
+  border-radius: 20px;
+  opacity: 0.8;
+  font-family: var(--font-titledddd);
+  font-size: 1.2rem;
+  // font-weight: 700;
+  // filter: blur(4px);
+
+
+
+
+  h3 {
+    margin-top: 25px;
+    color: #355e3b;
+  }
+
+  p,
+  li {
+    line-height: 1.6;
+    color: #333;
+  }
+
+  ul {
+    margin-left: 20px;
+    list-style: disc;
+  }
+
+  a {
+    color: #006d5b;
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  blockquote {
+    margin-top: 40px;
+    padding: 20px;
+    background: #eef5f1;
+    border-left: 5px solid #355e3b;
+    font-style: italic;
+    font-size: 20px;
+    color: #444;
+    text-align: center;
+  }
+}
