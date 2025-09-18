@@ -16,7 +16,7 @@
   color: #ff4757;
 }
 
-// Секция автора
+
 .authorSection {
   background-color: var(--graydark);
   border-radius: 12px;
@@ -148,7 +148,7 @@
   font-weight: 500;
 }
 
-// Биография
+
 .bioSection {
   border-top: 1px solid #eaeaea;
   padding-top: 20px;
@@ -174,8 +174,28 @@
   color: var(--bigTextHome);
   }
 }
+.readButton {
+  display: inline-block;
+  margin-top: 20px;
+  font-family: var(--font-small);
+  color: var(--bigTextHome);
+  background-color: #3a3a3a;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
 
-// Секция книг
+  &:hover {
+    // background-color: var(--bigTextHome);
+    box-shadow: 0 4px 15px rgba(240, 241, 188, 0.361);
+    // color: white;
+  }
+}
+
+//  книги
 .booksSection {
   background-color: var(--graydark);
   border-radius: 12px;

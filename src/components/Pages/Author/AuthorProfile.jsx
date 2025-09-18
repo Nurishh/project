@@ -12,6 +12,7 @@ const AuthorProfile = () => {
   const [author, setAuthor] = useState(null);
   const [authorBooks, setAuthorBooks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isAuthorAdded, setIsAuthorAdded] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
@@ -31,6 +32,9 @@ const AuthorProfile = () => {
         );
 
         setAuthorBooks(authorsBooks);
+
+        // Проверяеm добавлен ли автор уже в избранное
+        checkIfAuthorAdded();
       } catch (error) {
         console.error("Ошибка загрузки данных:", error);
       } finally {
@@ -40,6 +44,66 @@ const AuthorProfile = () => {
 
     loadAuthorData();
   }, [id]);
+
+  const checkIfAuthorAdded = async () => {
+    try {
+      const user = JSON.parse(localStorage.getItem("user-data"));
+      if (!user) return;
+
+      const res = await fetch(`http://localhost:3001/users/${user.id}`);
+      const userData = await res.json();
+
+      const myAuthors = userData.myAuthors || [];
+      setIsAuthorAdded(myAuthors.includes(id));
+    } catch (error) {
+      console.error("Ошибка проверки автора:", error);
+    }
+  };
+
+  const handleAddAuthor = async () => {
+    try {
+      const user = JSON.parse(localStorage.getItem("user-data"));
+      if (!user) {
+        alert("Пожалуйста, войдите в систему");
+        return;
+      }
+
+      const res = await fetch(`http://localhost:3001/users/${user.id}`);
+      const userData = await res.json();
+
+      //  получаем массив myAuthors
+      const myAuthors = userData.myAuthors || [];
+
+      if (myAuthors.includes(id)) {
+        // Если автор уже добавлен - удаляем
+        const updatedAuthors = myAuthors.filter((authorId) => authorId !== id);
+
+        await fetch(`http://localhost:3001/users/${user.id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ myAuthors: updatedAuthors }),
+        });
+
+        setIsAuthorAdded(false);
+        alert("Автор удален из избранных");
+      } else {
+        //  не добавлен - добавляем
+        const updatedAuthors = [...myAuthors, id];
+
+        await fetch(`http://localhost:3001/users/${user.id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ myAuthors: updatedAuthors }),
+        });
+
+        setIsAuthorAdded(true);
+        alert("Автор добавлен в избранные!");
+      }
+    } catch (error) {
+      console.error("Ошибка:", error);
+      alert("Ошибка при изменении списка авторов");
+    }
+  };
 
   if (loading) {
     return <div className={styles.loading}>Загрузка автора...</div>;
@@ -51,7 +115,7 @@ const AuthorProfile = () => {
 
   return (
     <div className={styles.container}>
-      {/* Профиль автора */}
+      {/* Профиль  */}
       <div className={styles.authorSection}>
         <div className={styles.authorHeader}>
           <div className={styles.authorImage}>
@@ -109,6 +173,17 @@ const AuthorProfile = () => {
                 </div>
               </div>
             )}
+
+            
+            <button
+              className={`${styles.readButton} ${
+                isAuthorAdded ? styles.added : ""
+              }`}
+              onClick={handleAddAuthor}>
+              {isAuthorAdded
+                ? "✓ Добавлено"
+                : "+ Добавить автора"}
+            </button>
           </div>
         </div>
 
@@ -140,7 +215,6 @@ const AuthorProfile = () => {
               320: { slidesPerView: 1 },
               480: { slidesPerView: 2 },
               768: { slidesPerView: 3 },
-              // 1024: { slidesPerView: 4 },
             }}
             pagination={{ clickable: true }}
             navigation

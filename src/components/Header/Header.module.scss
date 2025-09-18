@@ -223,3 +223,17 @@
     left: 0;
   }
 }
+@media (max-width: 425px) {
+  .header {
+ 
+    gap: 15px;
+    padding: 0;
+    margin: 15px;
+    font-size: 12px;
+  }
+  .search{
+    padding: 5px;
+    font-size: 10px;
+    min-width: 90%;
+  }
+}

@@ -1,19 +1,12 @@
 
-import React from "react";
-// import { useOutletContext } from "react-router-dom";
+import { useUserBooks } from "../hooks/useUserBooks";
+import { BookGrid } from "../BookGrid/BookGrid";
+import styles from "./Favorite.module.scss";
 
-export function Favorite() {
+export const Favorite = () => {
+  const { books, loading, refresh } = useUserBooks("favorite");
 
-  // const { favoriteBooks } = useOutletContext();
+  if (loading) return <div className={styles.loading}>Загрузка...</div>;
 
-  return (
-    <div>
-      <h2>Любимые книги</h2>
-      {/* <ul>
-        {favoriteBooks.map((book, index) => (
-          <li key={index}>{book.title}</li>
-        ))}
-      </ul> */}
-    </div>
-  );
-}
+  return <BookGrid books={books} title="Любимые книги" />;
+};

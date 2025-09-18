@@ -5,53 +5,104 @@ import styles from "./BookId.module.scss";
 const BookID = () => {
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
-  const { id } = useParams(); // Получаем ID из URL
   const [open, setOpen] = useState(false);
+  const { id } = useParams();
 
-  const handleAddToSection = async (section) => {
-    try {
-      await fetch(`http://localhost:3001/books/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status: section }),
-      });
-
-      setBook((prev) => ({ ...prev, status: section }));
-      setOpen(false);
-    } catch (error) {
-      console.error("Ошибка добавления:", error);
-    }
-  };
-
+  // Загрузка книги
   const loadBook = () => {
     fetch(`http://localhost:3001/books/${id}`)
       .then((res) => {
-        if (!res.ok) {
-          throw new Error("Книга не найдена");
-        }
+        if (!res.ok) throw new Error("Книга не найдена");
         return res.json();
       })
       .then((data) => {
         setBook(data);
         setLoading(false);
       })
-      .catch((error) => {
-        console.error("Ошибка загрузки книги:", error);
-        setLoading(false);
-      });
+      .catch(() => setLoading(false));
   };
 
   useEffect(() => {
     loadBook();
-  }, [id]); // Зависимость от id
+  }, [id]);
 
-  if (loading) {
-    return <div className={styles.loading}>Загрузка...</div>;
-  }
+  
+  const handleAddToSection = async (section) => {
+    try {
+      // Получаем текущего юзера
+      const user = JSON.parse(localStorage.getItem("user-data"));
 
-  if (!book) {
-    return <div className={styles.error}>Книга не найдена</div>;
-  }
+      const res = await fetch(`http://localhost:3001/users/${user.id}`);
+      const userData = await res.json();
+
+      // страуктура 
+      const myBooks = {
+        favorite:
+          userData.myBooks?.favorite || userData.myshots?.favorite || [],
+        readingNow:
+          userData.myBooks?.readingNow || userData.myshots?.readingNow || [],
+        finished:
+          userData.myBooks?.finished || userData.myshots?.finished || [],
+        wantToRead:
+          userData.myBooks?.wantToRead || userData.myshots?.wantToRead || [],
+        abandoned:
+          userData.myBooks?.abandoned || userData.myshots?.abandoned || [],
+        other: userData.myBooks?.other || userData.myshots?.other || [],
+        all: userData.myBooks?.all || userData.myshots?.all || [],
+      };
+
+      // Удаляем книгу из всех разделов (кроме all и текущего)
+      Object.keys(myBooks).forEach((key) => {
+        if (key !== "all" && key !== section && Array.isArray(myBooks[key])) {
+          myBooks[key] = myBooks[key].filter((bookId) => bookId !== id);
+        }
+      });
+
+      // Добавляем в выбранный раздел
+      if (!myBooks[section].includes(id)) {
+        myBooks[section].push(id);
+      }
+
+      // Добавляем в раздел "all"
+      if (!myBooks.all.includes(id)) {
+        myBooks.all.push(id);
+      }
+
+      // Обновляем данные пользвт
+      await fetch(`http://localhost:3001/users/${user.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          myBooks: myBooks,
+          myshots: undefined, // Удаляем старое если еть конечно
+        }),
+      });
+
+      // Обновляем статус книги
+      setBook((prev) => ({ ...prev, status: section }));
+      setOpen(false);
+      alert(`Книга добавлена в "${getSectionName(section)}"`);
+    } catch (error) {
+      console.error("Ошибка:", error);
+      alert("Ошибка при добавлении книги");
+    }
+  };
+
+  
+  const getSectionName = (section) => {
+    const sectionNames = {
+      favorite: "любимые",
+      readingNow: "читаю сейчас",
+      finished: "прочитано",
+      wantToRead: "хочу прочитать",
+      abandoned: "брошено",
+      other: "другое",
+    };
+    return sectionNames[section] || section;
+  };
+
+  if (loading) return <div className={styles.loading}>Загрузка...</div>;
+  if (!book) return <div className={styles.error}>Книга не найдена</div>;
 
   return (
     <div className={styles.container}>
@@ -65,8 +116,8 @@ const BookID = () => {
           <p className={styles.author}>Автор: {book.author}</p>
 
           <div className={styles.genres}>
-            {book.genre.map((genre, index) => (
-              <span key={index} className={styles.genreTag}>
+            {book.genre.map((genre, i) => (
+              <span key={i} className={styles.genreTag}>
                 {genre}
               </span>
             ))}
@@ -90,47 +141,36 @@ const BookID = () => {
               Читать книгу
             </a>
 
-            <div>
-              {/* кнопка */}
+           
+            <div className={styles.addSection}>
               <button
-                className={styles.readButton}
+                className={`${styles.readButton} ${
+                  book.status ? styles.hasStatus : ""
+                }`}
                 onClick={() => setOpen(!open)}>
-                {book.status ? book.status : "+ добавить"}
+                {book.status
+                  ? `✓ ${getSectionName(book.status)}`
+                  : "+ добавить в мои книги"}
               </button>
 
-              {/* выпадающий список */}
               {open && (
-                <div>
-                  <button
-                    className={styles.division}
-                    onClick={() => handleAddToSection("favorite")}>
-                    + любимые
-                  </button>
-                  <button
-                    className={styles.division}
-                    onClick={() => handleAddToSection("reading")}>
-                    + читаю сейчас
-                  </button>
-                  <button
-                    className={styles.division}
-                    onClick={() => handleAddToSection("finished")}>
-                    + прочитано
-                  </button>
-                  <button
-                    className={styles.division}
-                    onClick={() => handleAddToSection("wantread")}>
-                    + хочу прочитать
-                  </button>
-                  <button
-                    className={styles.division}
-                    onClick={() => handleAddToSection("dropped")}>
-                    + брошено
-                  </button>
-                  <button
-                    className={styles.division}
-                    onClick={() => handleAddToSection("other")}>
-                    + другое
-                  </button>
+                <div className={styles.sectionsDropdown}>
+                  {[
+                    "favorite",
+                    "readingNow",
+                    "finished",
+                    "wantToRead",
+                    "abandoned",
+                    "other",
+                  ].map((section) => (
+                    <button
+                      key={section}
+                      className={styles.sectionButton}
+                      onClick={() => handleAddToSection(section)}>
+                      {book.status === section ? "✓ " : "+ "}
+                      {getSectionName(section)}
+                    </button>
+                  ))}
                 </div>
               )}
             </div>

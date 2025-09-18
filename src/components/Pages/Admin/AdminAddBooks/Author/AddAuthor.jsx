@@ -20,7 +20,7 @@ export default function AddAuthor() {
   };
 
   const handleAddAuthor = () => {
-    // Преобразуем genres в массив и popularity в число
+    // popularity в число
     const authorData = {
       ...formData,
       genres: formData.genres.split(",").map((g) => g.trim()),
@@ -161,7 +161,7 @@ export default function AddAuthor() {
         <strong>💡 Подсказки:</strong>
         <ul style={{ margin: "5px 0", paddingLeft: "20px" }}>
           <li>Жанры: фэнтези, научная фантастика, роман, детектив</li>
-          <li>Фото: можно использовать ссылки с Unsplash</li>
+          <li>Фото: можно использовать ссылки </li>
         </ul>
       </div>
     </div>

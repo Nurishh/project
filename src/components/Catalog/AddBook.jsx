@@ -25,7 +25,7 @@ export default function AddBook() {
   };
 
   const handleAdd = () => {
-    // Преобразуем genre в массив
+    // genre в массив
     const bookData = {
       ...formData,
       genre: formData.genre.split(",").map((g) => g.trim()),

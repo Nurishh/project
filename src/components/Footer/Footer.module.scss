@@ -23,22 +23,37 @@
     }
   }
 
-  .img{
+  .img {
     display: flex;
     gap: 15px;
     align-items: center;
 
-    a{
-        gap: 15px;
+    a {
+      gap: 15px;
     }
 
-    img{
-        height: 3vh;
-        width: 3vh;
-        filter: blur(0.7px);
+    img {
+      height: 3vh;
+      width: 3vh;
+      filter: blur(0.7px);
     }
-    img:hover{
-        filter: blur(0);
+    img:hover {
+      filter: blur(0);
     }
+  }
+}
+@media (max-width: 415px) {
+  .text{
+    flex-direction: column;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+  p{
+    font-size: 12px;
+  }
+
+  .img {
+    flex-direction: column;
   }
 }

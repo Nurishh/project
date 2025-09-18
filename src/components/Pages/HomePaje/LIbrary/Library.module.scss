@@ -1,0 +1,17 @@
+.contaimer {
+  margin-block: 150px;
+  margin-inline: 60px;
+  text-align: center;
+
+  line-height: 2;
+  .bigtext {
+    font-family: var(--font-basic);
+    font-size: 1.2em;
+    color: d1b06b;
+  }
+  .p {
+    font-family: var(--font-small);
+    font-size: 20px;
+    color: rgb(227, 229, 213);
+  }
+}

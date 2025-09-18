@@ -95,6 +95,7 @@ export function Header() {
             {item.title}
           </span>
         ))}
+        
       </nav>
 
       <div className={styles.searchContainer}>
@@ -105,6 +106,14 @@ export function Header() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
+          {/* {user && (
+            <div className={styles.userBlock}>
+              <span className={styles.userName}>{user.name}</span>
+              <button className={styles.logoutBtn} onClick={handleLogout}>
+                Выйти
+              </button>
+            </div>
+          )} */}
         </form>
 
         {/* Выпад список  */}
@@ -147,14 +156,14 @@ export function Header() {
           </div>
         )}
       </div>
-      {user && (
+      {/* {user && (
         <div className={styles.userBlock}>
           <span className={styles.userName}>{user.name}</span>
           <button className={styles.logoutBtn} onClick={handleLogout}>
             Выйти
           </button>
         </div>
-      )}
+      )} */}
     </header>
   );
 }

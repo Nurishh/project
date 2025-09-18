@@ -1,10 +1,10 @@
 import { useUserBooks } from "../hooks/useUserBooks";
 import { BookGrid } from "../BookGrid/BookGrid";
 
-export function Always() {
-  const { books, loading, refresh } = useUserBooks("all");
+export default function Dropped() {
+  const { books, loading, refresh } = useUserBooks("abandoned");
 
   if (loading) return <div>Загрузка...</div>;
 
-  return <BookGrid books={books} title="все" />;
+  return <BookGrid books={books} title="брошено" />;
 }

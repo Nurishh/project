@@ -1,4 +1,4 @@
-/* BookWorm.module.scss (горизонтальная версия) */
+
 .container {
     margin-top: 180px;
   display: flex;
@@ -45,7 +45,7 @@
   }
 }
 
-/* Мобильная версия */
+
 @media (max-width: 768px) {
   .content {
     flex-direction: column;
@@ -62,5 +62,8 @@
   
   .imageContainer img {
     border-radius: 25px;
+    // display: flex;
+    // justify-content: center;
+    // text-align: center;
   }
 }

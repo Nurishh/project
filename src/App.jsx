@@ -3,7 +3,7 @@ import { Header } from "./components/Header/Header";
 import "./styles/global.scss";
 import { NotFound } from "./components/Pages/NotFound/NotFound";
 import { Product } from "./components/Pages/Product/Product";
-import { MyBooks } from "./components/Pages/MyBooks/MyBook";
+import {MyBooks} from "./components/Pages/MyBooks/MyBook";
 import { About } from "./components/Pages/About/About";
 import { Catalog } from "./components/Catalog/Catalog";
 import { Admin } from "./components/Pages/Admin/Admin";
@@ -18,6 +18,12 @@ import { Always } from "./components/Pages/MyBooks/components/always/Always";
 import BookList from "./components/Catalog/BookList";
 import BookID from "./components/Pages/Reading/BookID";
 import AuthorProfile from "./components/Pages/Author/AuthorProfile";
+import Reading from "./components/Pages/MyBooks/components/reading/Reading";
+import Finished from "./components/Pages/MyBooks/components/finished/Finished";
+import Wantread from "./components/Pages/MyBooks/components/wantread/Wantread";
+import Dropped from "./components/Pages/MyBooks/components/dropped/Dropped";
+import Authors from "./components/Pages/MyBooks/components/authors/Authors";
+import Other from "./components/Pages/MyBooks/components/other/Other";
 // import { SearchPage } from "./components/Header/Search/SearchPage";
 
 function App() {
@@ -37,12 +43,12 @@ function App() {
             <Route path="/mybooks" element={<MyBooks />}>
               <Route path="always" element={<Always />} />
               <Route path="favorite" element={<Favorite />} />
-              <Route path="reading" element={<div>Читаю сейчас</div>} />
-              <Route path="finished" element={<div>Прочитано</div>} />
-              <Route path="wantread" element={<div>хочу пррочитать</div>} />
-              <Route path="dropped" element={<div>Брошено</div>} />
-              <Route path="authors" element={<div>Авторы</div>} />
-              <Route path="other" element={<div>другое</div>} />
+              <Route path="reading" element={<Reading />} />
+              <Route path="finished" element={<Finished />} />
+              <Route path="wantread" element={<Wantread />} />
+              <Route path="dropped" element={<Dropped />} />
+              <Route path="authors" element={<Authors />} />
+              <Route path="other" element={<Other />} />
             </Route>
 
             <Route path="/product" element={<Product />} />
