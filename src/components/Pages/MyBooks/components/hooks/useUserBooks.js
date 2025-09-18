@@ -23,7 +23,7 @@ export const useUserBooks = (section) => {
       // Получаем ID книг из нужного раздела
       const bookIds = userData.myBooks?.[section] || [];
 
-      // данные каждой книги
+      // Загружаем данные каждой книги
       const booksData = await Promise.all(
         bookIds.map(async (bookId) => {
           const bookRes = await fetch(`http://localhost:3001/books/${bookId}`);
